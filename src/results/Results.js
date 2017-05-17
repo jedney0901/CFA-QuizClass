@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 class Results extends Component {
   render() {
@@ -10,6 +11,16 @@ class Results extends Component {
       </div>
     )
   }
+}
+
+Results.propTypes = {
+  score: PropTypes.number.isRequired,
+  end_message: PropTypes.string,
+  handleReset: PropTypes.func.isRequired
+}
+
+Results.defaultProps = {
+  end_message: 'Congratulations, you suck!!'
 }
 
 export default Results;
