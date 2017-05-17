@@ -3,6 +3,8 @@ import Question from '../questions/Question';
 import ProgressBar from '../progressbar/ProgressBar';
 import MultiChoice from '../multichoice/MultiChoice';
 import Results from '../results/Results'
+import CircularProgressbar from 'react-circular-progressbar';
+import '../circularprogressbar/CircularProgressbar.css'
 import './App.css';
 
 class App extends Component {
@@ -72,6 +74,7 @@ class App extends Component {
                handleSubmit={this.submitAnswer}
                selectedAnswer={this.state.selected}
              />
+             <CircularProgressbar percentage={this.state.progress/this.quiz_data.length*100} />
            </div>
          )
          : (
