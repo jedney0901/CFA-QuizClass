@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import Button from 'react-bootstrap/lib/Button';
+
 
 class Results extends Component {
   render() {
@@ -7,7 +9,7 @@ class Results extends Component {
       <div>
         <h3>{this.props.end_message}</h3>
         <p>Your score was: {this.props.score}</p>
-        <button onClick={this.props.handleReset}>Retry</button>
+        <Button bsStyle="Primary" onClick={this.props.handleReset}>Retry</Button>
       </div>
     )
   }
