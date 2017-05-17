@@ -7,12 +7,13 @@ import CircularProgressbar from 'react-circular-progressbar';
 import '../circularprogressbar/CircularProgressbar.css'
 import './App.css';
 
+
 class App extends Component {
   constructor(props) {
   super(props);
   this.state = {
     progress: 0,
-    selected: 'Pick one!',
+    selected: 'Nothing yet, pick one!',
     score: 0
   };
   this.updateSelected = this.updateSelected.bind(this);
@@ -60,29 +61,29 @@ class App extends Component {
 
 
   render() {
-     return (
-       <div>
-         <h2>Quiz App</h2>
+    return (
+      <div className="container">
+        <div className="row">
+        <h1 className="text-center">Quiz App</h1>.
+        {this.state.progress < this.quiz_data.length ? (
+        <div className="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 text-center">
+          <Question current_question={this.quiz_data[this.state.progress].question} />
+          <ProgressBar current_step={this.state.progress + 1} question_length={this.quiz_data.length} />
+          <MultiChoice
+            answers={this.quiz_data[this.state.progress].possible_answers}
+            updateSelected={this.updateSelected}
+            handleSubmit={this.submitAnswer}
+            selectedAnswer={this.state.selected}
+          />
+        </div>
+        ) : (
+        <Results score={this.state.score} end_message="Congratulations, you have finished!" handleReset={this.resetQuiz} />
+        )}
+      </div>
+    </div>
 
-         {this.state.progress < this.quiz_data.length ? (
-           <div>
-             <Question current_question={this.quiz_data[this.state.progress].question} />
-             <ProgressBar current_step={this.state.progress + 1} question_length={this.quiz_data.length} />
-             <MultiChoice
-               answers={this.quiz_data[this.state.progress].possible_answers}
-               updateSelected={this.updateSelected}
-               handleSubmit={this.submitAnswer}
-               selectedAnswer={this.state.selected}
-             />
-             <CircularProgressbar percentage={this.state.progress/this.quiz_data.length*100} />
-           </div>
-         )
-         : (
-         <Results score={this.state.score} end_message="Congratulations, you have finished!" handleReset={this.resetQuiz} />
-          )}
-       </div>
-     );
-   }
- }
+    );
+  }
+}
 
 export default App;

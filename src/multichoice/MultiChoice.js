@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/lib/Button';
 
 class MultiChoice extends Component {
   render() {
     return (
       <div>
-        {this.props.answers.map((answer, i) => <button key={i} onClick={() => this.props.updateSelected(answer)}> {answer} </button>)}
+        {this.props.answers.map((answer, i) => <Button key={i} onClick={() => this.props.updateSelected(answer)}> {answer} </Button>)}
       <br />
       <p>You have Selected: {this.props.selectedAnswer}</p>
-      <button onClick={this.props.handleSubmit}>Submit</button>
+      <Button bsStyle="primary" onClick={this.props.handleSubmit}>Submit</Button>
       </div>
     )
   }
